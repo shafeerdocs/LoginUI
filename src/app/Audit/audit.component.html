@@ -1,0 +1,32 @@
+﻿<div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Last Login</th>
+            <th scope="col">Logout</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of displayedUser">
+            <td >{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.role == 1 ? 'User' : 'Auditor'}}</td>
+            <td >{{user.loginHistory | date:'short'}}</td>
+            <td>{{user.logoutHistory | date:'short'}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <nav aria-label="...">
+        <ul class="pagination">
+          <li class="page-item " [ngClass]="currentPage <= 1 ? 'disabled' : ''" (click)="prev()">
+            <span class="page-link">Previous</span>
+          </li>
+          <li class="page-item" [ngClass]="currentPage >= totalPages ? 'disabled' : ''" (click)="next()">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
+</div>
